@@ -10,7 +10,7 @@ import progressbar
 
 def make_progressbar(msg='Default progressbar message: ', maxval=0):
     return progressbar.ProgressBar(widgets=[msg, progressbar.Percentage(),
-                                            progressbar.Bar(widget=marker=progressbar.RotatingMarker())],
+                                            progressbar.Bar(marker=progressbar.RotatingMarker())],
                                    maxval=maxval).start()
 ####################################################################################################################
 
