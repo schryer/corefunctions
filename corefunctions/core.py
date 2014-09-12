@@ -8,7 +8,7 @@ __all__ = ['collections', 'namedtuple', 'defaultdict', 'OrderedDict', 'convert_n
 ############################  Functions based on the progressbar module (external)  ################################
 import progressbar
 
-def make_progressbar(msg='Default progressbar message: ', maxval=0)
+def make_progressbar(msg='Default progressbar message: ', maxval=0):
     return progressbar.ProgressBar(widgets=[msg, progressbar.Percentage(),
                                             progressbar.Bar(widget=marker=progressbar.RotatingMarker())],
                                    maxval=maxval).start()
