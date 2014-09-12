@@ -3,7 +3,7 @@ Module that provides basic functions to be used in most Python projects.
 '''
 
 __all__ = ['collections', 'namedtuple', 'defaultdict', 'OrderedDict', 'convert_nested_defaultdict_to_dict',
-           'make_nested_defaultdict', 'pprint', 'pf', 'pp', 'itertools', 'pairwise', 'resource', 'memory_used']
+           'make_nested_defaultdict', 'pprint', 'pf', 'pp', 'itertools', 'pairwise', 'resource', 'memory_used', 'make_progressbar']
 
 ############################  Functions based on the progressbar module (external)  ################################
 import progressbar
