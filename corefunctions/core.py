@@ -5,6 +5,15 @@ Module that provides basic functions to be used in most Python projects.
 __all__ = ['collections', 'namedtuple', 'defaultdict', 'OrderedDict', 'convert_nested_defaultdict_to_dict',
            'make_nested_defaultdict', 'pprint', 'pf', 'pp', 'itertools', 'pairwise', 'resource', 'memory_used']
 
+############################  Functions based on the progressbar module (external)  ################################
+import progressbar
+
+def make_progressbar(msg='Default progressbar message: ', maxval=0)
+    return progressbar.ProgressBar(widgets=[msg, progressbar.Percentage(),
+                                            progressbar.Bar(widget=marker=progressbar.RotatingMarker())],
+                                   maxval=maxval).start()
+####################################################################################################################
+
 ############################  Functions based on the collections module  ###########################################
 import collections
 from collections import namedtuple, defaultdict, OrderedDict
@@ -54,7 +63,6 @@ def pairwise(iterable):
     
 ##############################  Functions used in debugging  #########################################################
 import resource
-
 def memory_used(units='kB'):
     m = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     if units in ['mB', 'MB']:
