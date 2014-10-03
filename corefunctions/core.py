@@ -2,21 +2,27 @@
 Module that provides basic functions to be used in most Python projects.
 '''
 
-__all__ = ['collections', 'namedtuple', 'defaultdict', 'OrderedDict', 'convert_nested_defaultdict_to_dict',
+__all__ = ['collections', 'namedtuple', 'defaultdict', 'OrderedDict', 'convert_nested_defaultdict_to_dict', 'Counter',
            'make_nested_defaultdict', 'pprint', 'pf', 'pp', 'itertools', 'pairwise', 'resource', 'memory_used', 'make_progressbar']
 
 ############################  Functions based on the progressbar module (external)  ################################
-import progressbar
-
-def make_progressbar(msg='Default progressbar message: ', maxval=0):
-    return progressbar.ProgressBar(widgets=[msg, progressbar.Percentage(),
-                                            progressbar.Bar(marker=progressbar.RotatingMarker())],
-                                   maxval=maxval).start()
+try:
+    import progressbar
+except ImportError as e:
+    print('Could not import progressbar.  The function make_progressbar will not work.')
+    progressbar = False
+    
+if progressbar:
+    def make_progressbar(msg='Default progressbar message: ', maxval=0):
+        return progressbar.ProgressBar(widgets=[msg, progressbar.Percentage(),
+                                                progressbar.Bar(marker=progressbar.RotatingMarker())],
+                                       maxval=maxval).start()
+        
 ####################################################################################################################
 
 ############################  Functions based on the collections module  ###########################################
 import collections
-from collections import namedtuple, defaultdict, OrderedDict
+from collections import namedtuple, defaultdict, OrderedDict, Counter
 
 def convert_nested_defaultdict_to_dict(dd):
     return {k:convert_nested_defaultdict_to_dict(v) for k,v in dd.items()} if isinstance(dd, defaultdict) else dd
